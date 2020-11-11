@@ -10,17 +10,31 @@ import java.util.List;
 
 
 public class Kata4 {
-
+    private static List<Mail> mailList;
+    private static Histogram <String> mailHistogram;
     
     public static void main(String[] args) {
-        //input
+       execute(); 
+    }
+    
+    private static void execute() {
+        input();
+        process();
+        output();
+    }
+    
+    private static void input() {
         String fileName = new String("emails.txt");
-        List<Mail> mailList = MailListReader.read(fileName);
-        //process
-        Histogram <String> mailHistogram = MailHistogramBuilder.build(mailList);
-        //output
-        new HistogramDisplay("HISTOGRAMA",mailHistogram).execute();
+        mailList = MailListReader.read(fileName);
+    }
+    
+    private static void process() {
+        mailHistogram = MailHistogramBuilder.build(mailList);
 
+    }
+    
+    private static void output() {
+        new HistogramDisplay("HISTOGRAMA",mailHistogram).execute();
     }
     
 }
